@@ -270,7 +270,7 @@ const objectSort = (array) => {
   const dateA = new Date(a.published_in);
   const dateB = new Date(b.published_in);
 
-    return dateA - dateB;
+    return dateB - dateA;
 
   });
 
