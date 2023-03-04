@@ -141,20 +141,20 @@ loaderActive(false);
               <div class="grid gap-2 md:grid-cols-2 lg:grid-cols-3 my-5">
                   <div class="bg-blue-600/10 p-2 rounded-md">
                       <p class="text-blue-600 font-semibold text-center">${
-                        data.pricing ? data.pricing[0].price : "free of cost"
+                        data.pricing ? data.pricing[0].price : "Free of cost"
                       } <br/>${
-      data.pricing ? data.pricing[0].plan : "No Data found"
+      data.pricing ? data.pricing[0].plan : "/Basic"
     }</p>
                   </div>
                   <div class="bg-teal-600/10 p-2 rounded-md"><p class="text-teal-600 font-semibold text-center">${
-                    data.pricing ? data.pricing[1].price : "No price available"
+                    data.pricing ? data.pricing[1].price : "Free of cost"
                   } <br/> ${
-      data.pricing ? data.pricing[1].plan : "No Data found"
+      data.pricing ? data.pricing[1].plan : "/Pro"
     }</p></div>
                   <div class="bg-red-600/10 p-2 rounded-md"><p class="text-red-600 font-semibold text-center">${
-                    data.pricing ? data.pricing[2].price : "free cost of"
+                    data.pricing ? data.pricing[2].price : "Free of cost"
                   } <br/> ${
-      data.pricing ? data.pricing[2].plan : "No Data found"
+      data.pricing ? data.pricing[2].plan : "/Enterprise"
     }</p></div>
               </div>
   
@@ -199,13 +199,13 @@ loaderActive(false);
                   <h1 class="text-2xl font-semibold my-3">${
                     data.input_output_examples
                       ? data.input_output_examples[0].input
-                      : "Not available"
+                      : "Can you give any example?"
                   }</h1>
                   <p>
                   ${
                     data.input_output_examples
                       ? data.input_output_examples[0].output
-                      : "Not available"
+                      : "No! Not Yet! Take a break!!!"
                   }
                   </p>
               </div>
