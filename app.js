@@ -217,7 +217,7 @@ function featureContentDisplay(items) {
       `;
   }
 
-  
+
 
   // Load data
 fetchAllData();
@@ -242,3 +242,16 @@ displayAllData(data.data.tools);
   };
   
   document.getElementById("show__more").addEventListener("click", fetchShowAllData);
+
+  // Function to sort items
+const objectSort = (array) => {
+    array.sort((a, b) => {
+    const dateA = new Date(a.published_in);
+    const dateB = new Date(b.published_in);
+  
+      return dateA - dateB;
+  
+    });
+  
+    displayAllData(array);
+  };
