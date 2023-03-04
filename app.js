@@ -255,3 +255,14 @@ const objectSort = (array) => {
   
     displayAllData(array);
   };
+
+
+
+  
+ //  Additional shorting
+ 
+const loaderActive = (isActive) => {
+    const loader = document.getElementById("loading");
+  
+    isActive ? loader.classList.remove("hidden") : loader.classList.add("hidden");
+  };
