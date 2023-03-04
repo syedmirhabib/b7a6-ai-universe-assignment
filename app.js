@@ -80,3 +80,20 @@ const displayAllData = (data) => {
   // Hide the loader
   loaderActive(false);
   };
+
+
+
+  // Function to display social contact information
+function displaySocialContact(items) {
+    // If there are no social contact items available, show a default message
+    items = items ? items : "No Data Available";
+    
+    let liHtml = "";
+    // Loop through each social contact item and generate the HTML
+    items.forEach((item) => {
+    liHtml += <li> ${item ? item : "No Data found"}</li> ;
+    });
+    
+    // Return the HTML
+    return liHtml;
+  }
