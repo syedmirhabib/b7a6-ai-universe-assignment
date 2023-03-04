@@ -209,9 +209,10 @@ loaderActive(false);
                   </p>
               </div>
   
-              <p class="absolute top-7 right-7 w-max bg-red-400 py-1 px-2 rounded-md text-white ${
+              <p class="absolute top-6 right-6 w-max bg-red-400 py-1 px-2 rounded-md text-white ${
                 data.accuracy.score === null ? "hidden" : "block"
-              } "> ${data.accuracy.score + " accuracy"} </p>
+              } "> ${(data.accuracy.score * 100).toFixed(1) + "% accuracy"} </p>
+
           </div>
           </div>
       `;
