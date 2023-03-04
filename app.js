@@ -97,3 +97,122 @@ function displaySocialContact(items) {
     // Return the HTML
     return liHtml;
   }
+
+
+
+
+
+  //  DISPLAY FEATURE CONTENT 
+function featureContentDisplay(items) {
+    let num = 1;
+    let liHtml = "";
+    items.forEach((item) => {
+      liHtml += `<li class="text-sm my-1 text-gray-700">
+                    <span>${num++}</span>
+                    <span>${item}</span>
+                  </li>`;
+    });
+  
+    return liHtml;
+  }
+  
+  async function fetchSingleData(id) {
+    const url = `https://openapi.programming-hero.com/api/ai/tool/${id}`;
+  
+    try {
+      const res = await fetch(url);
+      const data = await res.json();
+      displaySingleData(data.data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  
+  function displaySingleData(data) {
+    const modalBody = document.getElementById("modal__body");
+  
+  
+    modalBody.innerHTML = `
+          <div class="grid md:grid-cols-2 gap-3 ">
+              <div class="border border-rose-600 rounded-md p-7 bg-rose-300/10">
+              <h1 class="sm:text-2xl font-semibold">${data.description}</h1>
+  
+              <div class="grid gap-2 md:grid-cols-2 lg:grid-cols-3 my-5">
+                  <div class="bg-blue-600/10 p-2 rounded-md">
+                      <p class="text-blue-600 font-semibold text-center">${
+                        data.pricing ? data.pricing[0].price : "free of cost"
+                      } <br/>${
+      data.pricing ? data.pricing[0].plan : "No Data found"
+    }</p>
+                  </div>
+                  <div class="bg-teal-600/10 p-2 rounded-md"><p class="text-teal-600 font-semibold text-center">${
+                    data.pricing ? data.pricing[1].price : "No price available"
+                  } <br/> ${
+      data.pricing ? data.pricing[1].plan : "No Data found"
+    }</p></div>
+                  <div class="bg-red-600/10 p-2 rounded-md"><p class="text-red-600 font-semibold text-center">${
+                    data.pricing ? data.pricing[2].price : "free cost of"
+                  } <br/> ${
+      data.pricing ? data.pricing[2].plan : "No Data found"
+    }</p></div>
+              </div>
+  
+              <div class="flex justify-between items-center text-2xl font-semibold my-3">
+                  <p>Features</p>
+                  <p>Integrations</p>
+              </div>
+  
+             <div class="grid grid-cols-2 gap-3">
+              <ul>
+                  <li class="flex gap-1"> <i class="ri-check-line text-green-500 text-[13]"></i> ${
+                    data.features["1"].feature_name
+                      ? data.features["1"].feature_name
+                      : "not available"
+                  }</li>
+                  <li class="flex gap-1"> <i class="ri-check-line text-green-500 text-[13]"></i> ${
+                    data.features["2"].feature_name
+                      ? data.features["2"].feature_name
+                      : "not available"
+                  }</li>
+                  <li class="flex gap-1"> <i class="ri-check-line text-green-500 text-[13]"></i> ${
+                    data.features["3"].feature_name
+                      ? data.features["3"].feature_name
+                      : "not available"
+                  }</li>
+              </ul>
+  
+              <ul>
+                  ${socialContactDisplay(
+                    data.integrations ? data.integrations : ["No Data found"]
+                  )}
+              </ul>
+             </div>
+          </div>
+  
+          <div class="border border-teal-200 rounded-md p-5 bg-teal-300/10 relative">
+              <img class="w-full h-[15rem] object-cover rounded-md" src=${
+                data.image_link[0]
+              } alt="">
+  
+              <div class="text-center my-4">
+                  <h1 class="text-2xl font-semibold my-3">${
+                    data.input_output_examples
+                      ? data.input_output_examples[0].input
+                      : "Not available"
+                  }</h1>
+                  <p>
+                  ${
+                    data.input_output_examples
+                      ? data.input_output_examples[0].output
+                      : "Not available"
+                  }
+                  </p>
+              </div>
+  
+              <p class="absolute top-7 right-7 w-max bg-red-400 py-1 px-2 rounded-md text-white ${
+                data.accuracy.score === null ? "hidden" : "block"
+              } "> ${data.accuracy.score + " accuracy"} </p>
+          </div>
+          </div>
+      `;
+  }
