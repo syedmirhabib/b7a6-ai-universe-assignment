@@ -102,7 +102,8 @@ loaderActive(false);
 
 
 
-  // ============ DISPLAY FEATURE CONTENT ============
+  // Featuring Display Content
+
   function featureContentDisplay(items) {
     let num = 1;
     let liHtml = "";
