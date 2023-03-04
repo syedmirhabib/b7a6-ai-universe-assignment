@@ -182,7 +182,7 @@ loaderActive(false);
               </ul>
   
               <ul>
-                  ${socialContactDisplay(
+                  ${displaySocialContact(
                     data.integrations ? data.integrations : ["No Data found"]
                   )}
               </ul>
@@ -216,12 +216,10 @@ loaderActive(false);
           </div>
       `;
   }
-
   
 
 
-
-
+  
    // Function to display social contact information
 function displaySocialContact(items) {
   // If there are no social contact items available, show a default message
@@ -239,43 +237,41 @@ function displaySocialContact(items) {
   return liHtml;
 }
   
-
-
-  
   // Load data
 fetchAllData();
   
-  // Function to show all data on click
+// Function to show all data on click
 const fetchShowAllData = async () => {
-  const url = "https://openapi.programming-hero.com/api/ai/tools";
-  
-  const showMoreBtn = document.getElementById("show__more");
-  showMoreBtn.classList.add("hidden");
-  loaderActive(true);
-  
-  try {
-  const response = await fetch(url);
-  const data = await response.json();
-  
-  displayAllData(data.data.tools);
-  
-  } catch (error) {
-    console.log(error);
-    }
-    };
-    
-    document.getElementById("show__more").addEventListener("click", fetchShowAllData);
+const url = "https://openapi.programming-hero.com/api/ai/tools";
 
-  
-  // Function to sort items
-const objectSort = (array) => {
-    array.sort((a, b) => {
-    const dateA = new Date(a.published_in);
-    const dateB = new Date(b.published_in);
-  
-      return dateA - dateB;
-  
-    });
-  
-    displayAllData(array);
+const showMoreBtn = document.getElementById("show__more");
+showMoreBtn.classList.add("hidden");
+loaderActive(true);
+
+try {
+const response = await fetch(url);
+const data = await response.json();
+
+displayAllData(data.data.tools);
+
+} catch (error) {
+  console.log(error);
+  }
   };
+  
+  document.getElementById("show__more").addEventListener("click", fetchShowAllData);
+
+
+// Function to sort items
+const objectSort = (array) => {
+  array.sort((a, b) => {
+  const dateA = new Date(a.published_in);
+  const dateB = new Date(b.published_in);
+
+    return dateA - dateB;
+
+  });
+
+  displayAllData(array);
+};
+  
