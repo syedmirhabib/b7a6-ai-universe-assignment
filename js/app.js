@@ -244,7 +244,7 @@ fetchAllData();
 const fetchShowAllData = async () => {
 const url = "https://openapi.programming-hero.com/api/ai/tools";
 
-const showMoreBtn = document.getElementById("show__more");
+const showMoreBtn = document.getElementById("showMore");
 showMoreBtn.classList.add("hidden");
 loaderActive(true);
 
@@ -259,7 +259,7 @@ displayAllData(data.data.tools);
   }
   };
   
-  document.getElementById("show__more").addEventListener("click", fetchShowAllData);
+  document.getElementById("showMore").addEventListener("click", fetchShowAllData);
 
 
 // Function to sort items
