@@ -216,3 +216,29 @@ function featureContentDisplay(items) {
           </div>
       `;
   }
+
+  
+
+  // Load data
+fetchAllData();
+
+// Function to show all data on click
+const fetchShowAllData = async () => {
+const url = "https://openapi.programming-hero.com/api/ai/tools";
+
+const showMoreBtn = document.getElementById("show__more");
+showMoreBtn.classList.add("hidden");
+loaderActive(true);
+
+try {
+const response = await fetch(url);
+const data = await response.json();
+
+displayAllData(data.data.tools);
+
+} catch (error) {
+  console.log(error);
+  }
+  };
+  
+  document.getElementById("show__more").addEventListener("click", fetchShowAllData);
